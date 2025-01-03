@@ -1,5 +1,6 @@
 import fnmatch
 import hashlib
+import json
 import os
 import sys
 
@@ -27,9 +28,15 @@ def get_all_repository_files(ignore_patterns):
                 repo_files.append(relative_path)
     return repo_files
 
-ignore_file = sys.argv[1]
-files = sys.argv[2].split(",")
-ignore_patterns = load_ignore_patterns(ignore_file)
+def load_files_from_json(file_paths):
+    files = []
+    for file_path in file_paths:
+        with open(file_path, "r") as f:
+            files.extend(json.load(f))
+    return files
+
+ignore_patterns = load_ignore_patterns(sys.argv[1])
+files = load_files_from_json(sys.argv[2:])
 
 # Step 1: Build a checksum map for all existing repository files
 print("Calculating checksums for all repository files...")
