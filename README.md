@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Duplicate Guard
-        uses: chris-rutkowski/duplicate-guard@v1.0.0
+        uses: chris-rutkowski/duplicate-guard@v1.0.1
 ```
 
 ---
@@ -55,7 +55,7 @@ If your `duplicate_guard.ignore` file is not in the root directory, specify its 
 ```yaml
 steps:
   - name: Duplicate Guard
-    uses: chris-rutkowski/filesize-guard@v1.0.0
+    uses: chris-rutkowski/filesize-guard@v1.0.1
       with:
         ignore_file: ./my/path/my_filesize_guard.ignore
 ```
